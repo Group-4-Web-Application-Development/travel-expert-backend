@@ -1,6 +1,7 @@
 const express = require("express");
-const dbcon = require("./config/db");
+const { connectDB } = require("./config/db");
 const env = require("dotenv");
+const routes = require("./routes/routes");
 
 // load env
 env.config();
@@ -9,18 +10,9 @@ const app = express();
 const port = process.env.PORT || 8000;
 
 // check db connection
-dbcon.getConnection((err, conn) => {
-  if (err) throw err;
+connectDB();
 
-  conn.query("SELECT 1", (err) => {
-    conn.release();
-    if (err) {
-      console.error("Database connection failed:", err.message);
-      return;
-    }
-  });
-  console.log("Database connected successfully!");
-});
+app.use(routes);
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
