@@ -6,7 +6,7 @@ const env = require("dotenv");
 env.config();
 
 const app = express();
-const PORT = process.env.PORT || 8000;
+const port = process.env.PORT || 8000;
 
 // check db connection
 dbcon.getConnection((err, conn) => {
@@ -22,6 +22,6 @@ dbcon.getConnection((err, conn) => {
   console.log("Database connected successfully!");
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
 });
