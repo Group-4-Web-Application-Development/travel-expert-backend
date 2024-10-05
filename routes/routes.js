@@ -1,6 +1,6 @@
 const express = require("express");
-const { getContacts } = require("../controllers/contacts");
-const { getPackages, postOrder } = require("../controllers/packages");
+const { getContacts } = require("../controllers/contact");
+const { getPackages, postOrder } = require("../controllers/package");
 
 const router = express.Router();
 
