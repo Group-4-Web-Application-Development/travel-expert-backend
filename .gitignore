@@ -1,0 +1,15 @@
+node_modules/
+
+.env
+.env.local
+
+# Build outputs
+dist/
+build/
+
+# IDE or Editor directories
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
