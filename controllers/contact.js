@@ -1,3 +1,3 @@
-function getContacts(req, res) {}
+function getAgencyContact(req, res) {}
 
-module.exports = { getContacts };
+module.exports = { getAgencyContact };
