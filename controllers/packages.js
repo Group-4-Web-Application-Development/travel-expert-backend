@@ -7,7 +7,7 @@ const packageService = require("../services/package");
  */
 async function getPackages(req, res) {
   try {
-    const packages = await packageService.getAllPackages();
+    const packages = await packageService.getActivePackages();
     res.status(200).json(packages);
   } catch (error) {
     res.status(400).json({ error: error.message });
