@@ -4,7 +4,7 @@ const env = require("dotenv");
 const routes = require("./routes/routes");
 
 // load env
-env.config();
+env.config({ path: `.env.${process.env.NODE_ENV}` });
 
 const app = express();
 const port = process.env.PORT || 8000;

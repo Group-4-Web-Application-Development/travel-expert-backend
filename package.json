@@ -4,7 +4,8 @@
   "description": "a threaded project backend side of travel experts",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "local": "NODE_ENV=local nodemon app.js",
+    "start": "NODE_ENV=development nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
