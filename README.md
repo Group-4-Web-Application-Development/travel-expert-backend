@@ -8,8 +8,6 @@
 **Project Due Date:** 10-22-2024  
 **Group:** 4
 
----
-
 ## Table of Contents
 
 1. [Project Overview](#project-overview)
@@ -17,8 +15,6 @@
 3. [Technologies Used](#technologies-used)
 4. [Usage](#usage)
 5. [API Endpoints](#api-endpoints)
-
----
 
 ## Project Overview
 
