@@ -46,7 +46,6 @@ async function postOrder(packageId, orderDetail) {
   try {
     const [customer, created] = await Customer.findOrCreate({
       where: {
-        // Assuming CustEmail is a unique identifier
         CustFirstName: orderDetail.CustFirstName,
         CustLastName: orderDetail.CustLastName,
         CustEmail: orderDetail.CustEmail, // assuming that email is unique
