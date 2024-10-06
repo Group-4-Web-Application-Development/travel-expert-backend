@@ -1,7 +1,7 @@
 const express = require("express");
 const { getAgencyContacts } = require("../controllers/contact");
 const { getPackages, postOrder } = require("../controllers/package");
-const { createCustomer } = require("../controllers/customer");
+const { createCustomerHandler } = require("../controllers/customer");
 
 const router = express.Router();
 
@@ -17,6 +17,6 @@ router.get("/packages", getPackages);
 router.get("/packages/order", postOrder);
 
 // Create customer
-router.post("/customer", createCustomer);
+router.post("/customer", createCustomerHandler);
 
 module.exports = router;
