@@ -1,6 +1,6 @@
 const contactServices = require("../services/contact");
 
-async function getAgencyContacts(req, res) {
+async function getAgencyContactsHandler(req, res) {
   try {
     const contacts = await contactServices.getAgencyContacts();
     res.status(200).json(contacts);
@@ -9,4 +9,4 @@ async function getAgencyContacts(req, res) {
   }
 }
 
-module.exports = { getAgencyContacts };
+module.exports = { getAgencyContactsHandler };

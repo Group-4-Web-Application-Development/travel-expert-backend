@@ -5,7 +5,7 @@ const packageService = require("../services/package");
  * @param {Object} req - The request object
  * @param {Object} res - The response object
  */
-async function getPackages(req, res) {
+async function getPackagesHandler(req, res) {
   try {
     const packages = await packageService.getActivePackages();
     res.status(200).json(packages);
@@ -14,6 +14,6 @@ async function getPackages(req, res) {
   }
 }
 
-function postOrder(req, res) {}
+function postOrderHandler(req, res) {}
 
-module.exports = { getPackages, postOrder };
+module.exports = { getPackagesHandler, postOrderHandler };

@@ -1,6 +1,9 @@
 const express = require("express");
-const { getAgencyContacts } = require("../controllers/contact");
-const { getPackages, postOrder } = require("../controllers/package");
+const { getAgencyContactsHandler } = require("../controllers/contact");
+const {
+  getPackagesHandler,
+  postOrderHandler,
+} = require("../controllers/package");
 const { createCustomerHandler } = require("../controllers/customer");
 
 const router = express.Router();
@@ -9,12 +12,12 @@ const router = express.Router();
 router.get("/", (req, res) => {});
 
 // Contact page
-router.get("/contacts", getAgencyContacts);
+router.get("/contacts", getAgencyContactsHandler);
 
 // Packages page
-router.get("/packages", getPackages);
+router.get("/packages", getPackagesHandler);
 // Order page
-router.get("/packages/order", postOrder);
+router.get("/packages/order", postOrderHandler);
 
 // Create customer
 router.post("/customer", createCustomerHandler);
