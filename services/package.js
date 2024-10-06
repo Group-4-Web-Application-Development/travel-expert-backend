@@ -44,19 +44,25 @@ async function getActivePackages() {
  */
 async function postOrder(packageId, orderDetail) {
   try {
-    // Create customer
-    const customer = await Customer.create({
-      CustFirstName: orderDetail.CustFirstName,
-      CustLastName: orderDetail.CustLastName,
-      CustAddress: orderDetail.CustAddress,
-      CustCity: orderDetail.CustCity,
-      CustProv: orderDetail.CustProv,
-      CustPostal: orderDetail.CustPostal,
-      CustCountry: orderDetail.CustCountry,
-      CustHomePhone: orderDetail.CustHomePhone,
-      CustBusPhone: orderDetail.CustBusPhone,
-      CustEmail: orderDetail.CustEmail,
-      AgentId: orderDetail.AgentId,
+    const [customer, created] = await Customer.findOrCreate({
+      where: {
+        // Assuming CustEmail is a unique identifier
+        CustFirstName: orderDetail.CustFirstName,
+        CustLastName: orderDetail.CustLastName,
+      },
+      defaults: {
+        CustFirstName: orderDetail.CustFirstName,
+        CustLastName: orderDetail.CustLastName,
+        CustAddress: orderDetail.CustAddress,
+        CustCity: orderDetail.CustCity,
+        CustProv: orderDetail.CustProv,
+        CustPostal: orderDetail.CustPostal,
+        CustCountry: orderDetail.CustCountry,
+        CustHomePhone: orderDetail.CustHomePhone,
+        CustBusPhone: orderDetail.CustBusPhone,
+        CustEmail: orderDetail.CustEmail,
+        AgentId: orderDetail.AgentId,
+      }, // Data to create if not exists
     });
 
     // Create booking
