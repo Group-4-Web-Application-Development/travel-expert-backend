@@ -32,6 +32,16 @@ Travel Experts is a comprehensive web platform designed to streamline the travel
 
 ## Usage
 
+### Installation
+
+Before running the application, ensure that all dependencies are installed. Run the following command in the project directory:
+
+```sh
+npm install
+```
+
+This will install all necessary packages specified in the `package.json` file.
+
 ### Setting Up Environment Variables
 
 - Before starting the server, ensure that you have copied the `.env` file and renamed it based on the environment you're working in. For example, for local development, you should create a `.env.local` file
@@ -42,7 +52,6 @@ Travel Experts is a comprehensive web platform designed to streamline the travel
 To run the application in a local environment, use the following command:
 
 ```sh
-npm install
 npm run local
 ```
 
