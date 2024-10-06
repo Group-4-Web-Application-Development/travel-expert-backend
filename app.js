@@ -12,6 +12,7 @@ const port = process.env.PORT || 8000;
 // check db connection
 connectDB();
 
+app.use(express.json());
 app.use(routes);
 
 app.listen(port, () => {
