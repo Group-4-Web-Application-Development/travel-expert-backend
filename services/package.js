@@ -49,6 +49,7 @@ async function postOrder(packageId, orderDetail) {
         // Assuming CustEmail is a unique identifier
         CustFirstName: orderDetail.CustFirstName,
         CustLastName: orderDetail.CustLastName,
+        CustEmail: orderDetail.CustEmail, // assuming that email is unique
       },
       defaults: {
         CustFirstName: orderDetail.CustFirstName,
@@ -60,7 +61,6 @@ async function postOrder(packageId, orderDetail) {
         CustCountry: orderDetail.CustCountry,
         CustHomePhone: orderDetail.CustHomePhone,
         CustBusPhone: orderDetail.CustBusPhone,
-        CustEmail: orderDetail.CustEmail,
         AgentId: orderDetail.AgentId,
       }, // Data to create if not exists
     });
