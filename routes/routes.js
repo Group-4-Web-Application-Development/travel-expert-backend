@@ -1,6 +1,7 @@
 const express = require("express");
 const { getAgencyContactsHandler } = require("../controllers/contact");
 const {
+  validatePostOrder,
   getPackagesHandler,
   postOrderHandler,
 } = require("../controllers/package");
@@ -19,8 +20,8 @@ router.get("/contacts", getAgencyContactsHandler);
 
 // Packages page
 router.get("/packages", getPackagesHandler);
-// Order page
-router.get("/packages/order", postOrderHandler);
+// Post booking order
+router.post("/packages/:packageId/order", validatePostOrder, postOrderHandler);
 
 // Create customer
 router.post("/customer", validateCreateCustomer, createCustomerHandler);
