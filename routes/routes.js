@@ -4,7 +4,10 @@ const {
   getPackagesHandler,
   postOrderHandler,
 } = require("../controllers/package");
-const { createCustomerHandler } = require("../controllers/customer");
+const {
+  validateCreateCustomer,
+  createCustomerHandler,
+} = require("../controllers/customer");
 
 const router = express.Router();
 
@@ -20,6 +23,6 @@ router.get("/packages", getPackagesHandler);
 router.get("/packages/order", postOrderHandler);
 
 // Create customer
-router.post("/customer", createCustomerHandler);
+router.post("/customer", validateCreateCustomer, createCustomerHandler);
 
 module.exports = router;
