@@ -73,7 +73,7 @@ async function postOrderHandler(req, res) {
       },
     });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    res.status(400).json(new ErrorResponse(error.message));
   }
 }
 

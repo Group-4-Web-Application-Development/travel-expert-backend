@@ -35,14 +35,16 @@ async function createCustomerHandler(req, res) {
   // if not pass validator, return with 400
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
+    return res
+      .status(400)
+      .json(new ErrorResponse(errors.array()[0].msg, errors.array()[0]));
   }
 
   try {
     const customer = await customerService.createCustomer(req.body);
     res.status(201).json(customer);
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    res.status(400).json(new ErrorResponse(error.message));
   }
 }
 
