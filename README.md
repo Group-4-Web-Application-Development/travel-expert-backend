@@ -52,7 +52,7 @@ This will install all necessary packages specified in the `package.json` file.
 To run the application in a local environment, use the following command:
 
 ```sh
-npm run local
+npm run dev
 ```
 
 This will set the `NODE_ENV` to `local` and start the application with nodemon, enabling automatic server restarts when files change.
