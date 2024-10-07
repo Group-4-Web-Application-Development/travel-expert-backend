@@ -1,0 +1,102 @@
+{
+	"info": {
+		"_postman_id": "9ce6f0c9-0486-4076-be14-5483428fc455",
+		"name": "travel-experts-backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6415773"
+	},
+	"item": [
+		{
+			"name": "get available packages",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/packages",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"packages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get agecy contacts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/contacts",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"contacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create customer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"CustFirstName\": \"James\",\n    \"CustLastName\": \"Tanthikun\",\n    \"CustAddress\": \"123 Center St\",\n    \"CustCity\": \"Calgary\",\n    \"CustProv\": \"AB\",\n    \"CustPostal\": \"T1A 4X8\",\n    \"CustCountry\": \"Canada\",\n    \"CustHomePhone\": \"4035551234\",\n    \"CustBusPhone\": \"5875557890\",\n    \"CustEmail\": \"james@test.com\",\n    \"AgentId\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/customer",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post booking order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"TravelerCount\": 2,\n    \"TripTypeId\": \"L\",\n    \"CustFirstName\": \"James\",\n    \"CustLastName\": \"Tanthikun\",\n    \"CustAddress\": \"123 Center St\",\n    \"CustCity\": \"Calgary\",\n    \"CustProv\": \"AB\",\n    \"CustPostal\": \"T1A 4X8\",\n    \"CustCountry\": \"Canada\",\n    \"CustHomePhone\": \"4035551234\",\n    \"CustBusPhone\": \"5875557890\",\n    \"CustEmail\": \"james@test.com\",\n    \"AgentId\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/packages/1/order",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"packages",
+						"1",
+						"order"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
