@@ -13,3 +13,5 @@ build/
 *.sublime-project
 *.sublime-workspace
 .DS_Store
+
+db_data/
