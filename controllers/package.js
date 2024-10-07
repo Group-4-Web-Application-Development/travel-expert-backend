@@ -1,5 +1,6 @@
 const packageService = require("../services/package");
 const { param, body, validationResult } = require("express-validator");
+const { ErrorResponse } = require("./error");
 
 /**
  * Get a vacation packages
@@ -55,7 +56,9 @@ async function postOrderHandler(req, res) {
   // if not pass validator, return with 400
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
+    return res
+      .status(400)
+      .json(new ErrorResponse(errors.array()[0].msg, errors.array()[0]));
   }
   try {
     const order = await packageService.postOrder(
