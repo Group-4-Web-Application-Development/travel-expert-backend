@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 const { sequelize } = require("../config/db");
 
 const Customer = sequelize.define(
-  "Customer",
+  "customer",
   {
     CustomerId: {
       type: DataTypes.INTEGER,
@@ -60,7 +60,6 @@ const Customer = sequelize.define(
     },
   },
   {
-    tableName: "customers",
     timestamps: false,
   }
 );

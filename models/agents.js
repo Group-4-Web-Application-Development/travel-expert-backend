@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 const { sequelize } = require("../config/db");
 
 const Agent = sequelize.define(
-  "Agent",
+  "agent",
   {
     AgentId: {
       type: DataTypes.INTEGER,
@@ -44,7 +44,6 @@ const Agent = sequelize.define(
     },
   },
   {
-    tableName: "agents",
     timestamps: false,
   }
 );
