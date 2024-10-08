@@ -3,7 +3,7 @@ const { sequelize } = require("../config/db");
 
 // Define the ProductSupplier model
 const ProductSupplier = sequelize.define(
-  "ProductSupplier",
+  "productSupplier",
   {
     ProductSupplierId: {
       type: DataTypes.INTEGER,

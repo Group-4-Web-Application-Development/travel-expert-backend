@@ -1,5 +1,6 @@
 const customerService = require("../services/customer");
 const { body, validationResult } = require("express-validator");
+const { ErrorResponse } = require("./error");
 
 const customerFields = [
   "CustFirstName",
