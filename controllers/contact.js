@@ -1,4 +1,5 @@
 const contactServices = require("../services/contact");
+const { ErrorResponse } = require("./error");
 
 async function getAgencyContactsHandler(req, res) {
   try {
