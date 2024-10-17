@@ -3,6 +3,7 @@ const { connectDB } = require("./config/db");
 const env = require("dotenv");
 const routes = require("./routes/routes");
 const morgan = require("morgan");
+const cors = require("cors");
 
 // load env
 env.config();
@@ -15,6 +16,7 @@ connectDB();
 
 app.use(express.json());
 app.use(morgan("common"));
+app.use(cors());
 app.use(routes);
 
 app.listen(port, () => {
