@@ -49,6 +49,7 @@ const Customer = sequelize.define(
     CustEmail: {
       type: DataTypes.STRING(50),
       allowNull: false,
+      unique: true,
     },
     AgentId: {
       type: DataTypes.INTEGER,
@@ -57,6 +58,14 @@ const Customer = sequelize.define(
         model: "agents",
         key: "AgentId",
       },
+    },
+    UserId: {
+      type: DataTypes.STRING(100),
+      allowNull: false,
+    },
+    Password: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
     },
   },
   {

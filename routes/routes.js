@@ -23,7 +23,7 @@ router.get("/contacts", getAgencyContactsHandler);
 // Packages page
 router.get("/packages", getPackagesHandler);
 // Post booking order
-router.post("/packages/:packageId/order", validatePostOrder, postOrderHandler);
+router.post("/packages/order", validatePostOrder, postOrderHandler);
 
 // Create customer
 router.post("/customer", validateCreateCustomer, createCustomerHandler);
