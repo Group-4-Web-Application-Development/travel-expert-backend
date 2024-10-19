@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 const { sequelize } = require("../config/db");
 
 const Customer = sequelize.define(
-  "Customer",
+  "customer",
   {
     CustomerId: {
       type: DataTypes.INTEGER,
@@ -49,6 +49,7 @@ const Customer = sequelize.define(
     CustEmail: {
       type: DataTypes.STRING(50),
       allowNull: false,
+      unique: true,
     },
     AgentId: {
       type: DataTypes.INTEGER,
@@ -58,9 +59,16 @@ const Customer = sequelize.define(
         key: "AgentId",
       },
     },
+    UserId: {
+      type: DataTypes.STRING(100),
+      allowNull: false,
+    },
+    Password: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
   },
   {
-    tableName: "customers",
     timestamps: false,
   }
 );

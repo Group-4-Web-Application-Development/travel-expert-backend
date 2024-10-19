@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 const { sequelize } = require("../config/db");
 
 const Booking = sequelize.define(
-  "Booking",
+  "booking",
   {
     BookingId: {
       type: DataTypes.INTEGER,
@@ -48,7 +48,6 @@ const Booking = sequelize.define(
     },
   },
   {
-    tableName: "bookings",
     timestamps: false,
   }
 );

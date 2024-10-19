@@ -44,18 +44,16 @@ This will install all necessary packages specified in the `package.json` file.
 
 ### Setting Up Environment Variables
 
-- Before starting the server, ensure that you have copied the `.env` file and renamed it based on the environment you're working in. For example, for local development, you should create a `.env.local` file
-- Edit the `.env.local` file to configure the necessary environment variables for the local environment
+- Before starting the server, ensure that you have copied the `.env.local.example` file and renamed it to `.env`
+- Edit the `.env` file to configure the necessary environment variables for the local environment
 
 ### Running the Application Locally
 
 To run the application in a local environment, use the following command:
 
 ```sh
-npm run local
+npm run dev
 ```
-
-This will set the `NODE_ENV` to `local` and start the application with nodemon, enabling automatic server restarts when files change.
 
 ### Running the Application in Development Mode
 
@@ -64,8 +62,6 @@ To run the application in development mode, use the following command:
 ```sh
 npm start
 ```
-
-This will set the `NODE_ENV` to `development` and start the application with nodemon for automatic reloading.
 
 ### Running Tests
 

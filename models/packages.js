@@ -38,7 +38,6 @@ const package = sequelize.define(
     },
   },
   {
-    tableName: "packages",
     timestamps: false,
   }
 );

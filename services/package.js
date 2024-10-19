@@ -1,6 +1,7 @@
 const Package = require("../models/packages");
 const Customer = require("../models/customers");
 const Booking = require("../models/bookings");
+const { hashPassword, verifyPassword } = require("../utils/password");
 const { generateBookingNo } = require("../utils/booking_no");
 
 /**
@@ -25,42 +26,46 @@ async function getActivePackages() {
 
 /**
  * Create a new customer from form
- * @param {number} packageId - The package'id
  * @param {Object} orderDetail - The detail of the order
- * @param {number} orderDetail.TravelerCount - The number of traveler of the booking
- * @param {string} orderDetail.TripTypeId - The trip type id of the booking
- * @param {string} orderDetail.CustFirstName - The first name of the customer
- * @param {string} orderDetail.CustLastName - The last name of the customer
- * @param {string} orderDetail.CustAddress - The address of the customer
- * @param {string} orderDetail.CustCity - The city of the customer
- * @param {string} orderDetail.CustProv - The abbreviation of province in Canada of the customer
- * @param {string} orderDetail.CustPostal - The postal code of the customer
- * @param {string} orderDetail.CustCountry - The country of the customer
- * @param {string} orderDetail.CustHomePhone - The home phone number of the customer
- * @param {string} orderDetail.CustBusPhone - The business phone number of the customer
- * @param {string} orderDetail.CustEmail - The email address of the customer
- * @param {number} orderDetail.AgentId - The id of agent of the customer
+ * @param {number} orderDetail.travelerCount - The number of traveler of the booking
+ * @param {string} orderDetail.tripTypeId - The trip type id of the booking
+ * @param {string} orderDetail.packageId The package'id
+ * @param {string} orderDetail.custFirstName - The first name of the customer
+ * @param {string} orderDetail.custLastName - The last name of the customer
+ * @param {string} orderDetail.custAddress - The address of the customer
+ * @param {string} orderDetail.custCity - The city of the customer
+ * @param {string} orderDetail.custProv - The abbreviation of province in Canada of the customer
+ * @param {string} orderDetail.custPostal - The postal code of the customer
+ * @param {string} orderDetail.custCountry - The country of the customer
+ * @param {string} orderDetail.custHomePhone - The home phone number of the customer
+ * @param {string} orderDetail.custBusPhone - The business phone number of the customer
+ * @param {string} orderDetail.custEmail - The email address of the customer
+ * @param {number} orderDetail.agentId - The id of agent of the customer
+ * @param {number} orderDetail.userId - the user id of the customer
+ * @param {number} orderDetail.password - the password of the customer
  * @returns {Promise<Array>} An array of contact information
  */
-async function postOrder(packageId, orderDetail) {
+async function postOrder(orderDetail) {
   try {
     const [customer, created] = await Customer.findOrCreate({
       where: {
-        CustFirstName: orderDetail.CustFirstName,
-        CustLastName: orderDetail.CustLastName,
-        CustEmail: orderDetail.CustEmail, // assuming that email is unique
+        CustFirstName: orderDetail.custFirstName,
+        CustLastName: orderDetail.custLastName,
+        CustEmail: orderDetail.custEmail, // assuming that email is unique
       },
       defaults: {
-        CustFirstName: orderDetail.CustFirstName,
-        CustLastName: orderDetail.CustLastName,
-        CustAddress: orderDetail.CustAddress,
-        CustCity: orderDetail.CustCity,
-        CustProv: orderDetail.CustProv,
-        CustPostal: orderDetail.CustPostal,
-        CustCountry: orderDetail.CustCountry,
-        CustHomePhone: orderDetail.CustHomePhone,
-        CustBusPhone: orderDetail.CustBusPhone,
-        AgentId: orderDetail.AgentId,
+        CustFirstName: orderDetail.custFirstName,
+        CustLastName: orderDetail.custLastName,
+        CustAddress: orderDetail.custAddress,
+        CustCity: orderDetail.custCity,
+        CustProv: orderDetail.custProv,
+        CustPostal: orderDetail.custPostal,
+        CustCountry: orderDetail.custCountry,
+        CustHomePhone: orderDetail.custHomePhone,
+        CustBusPhone: orderDetail.custBusPhone,
+        AgentId: orderDetail.agentId,
+        UserId: orderDetail.userId,
+        Password: await hashPassword(orderDetail.password),
       }, // Data to create if not exists
     });
 
@@ -68,10 +73,10 @@ async function postOrder(packageId, orderDetail) {
     const booking = await Booking.create({
       BookingDate: new Date(),
       BookingNo: generateBookingNo(),
-      TravelerCount: orderDetail.TravelerCount,
+      TravelerCount: orderDetail.travelerCount,
       CustomerId: customer.CustomerId,
-      TripTypeId: orderDetail.TripTypeId,
-      PackageId: packageId,
+      TripTypeId: orderDetail.tripTypeId,
+      PackageId: orderDetail.packageId,
     });
 
     return { CustomerId: customer.CustomerId, BookingId: booking.BookingId };

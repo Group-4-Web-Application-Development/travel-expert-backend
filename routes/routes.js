@@ -5,6 +5,8 @@ const {
   getPackagesHandler,
   postOrderHandler,
 } = require("../controllers/package");
+
+const { getTripTypesHandler } = require("../controllers/triptype");
 const {
   validateCreateCustomer,
   createCustomerHandler,
@@ -21,9 +23,12 @@ router.get("/contacts", getAgencyContactsHandler);
 // Packages page
 router.get("/packages", getPackagesHandler);
 // Post booking order
-router.post("/packages/:packageId/order", validatePostOrder, postOrderHandler);
+router.post("/packages/order", validatePostOrder, postOrderHandler);
 
 // Create customer
 router.post("/customer", validateCreateCustomer, createCustomerHandler);
+
+// Trip type
+router.get("/triptypes", getTripTypesHandler);
 
 module.exports = router;

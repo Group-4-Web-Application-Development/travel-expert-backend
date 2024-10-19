@@ -1,16 +1,16 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../config/db");
 
-const Supplier = sequelize.define(
-  "supplier",
+const TripType = sequelize.define(
+  "triptype",
   {
-    SupplierId: {
-      type: DataTypes.INTEGER,
+    TripTypeId: {
+      type: DataTypes.STRING(1),
       primaryKey: true,
       allowNull: false,
     },
-    SupName: {
-      type: DataTypes.TEXT,
+    TTName: {
+      type: DataTypes.STRING(25),
       allowNull: true,
     },
   },
@@ -19,4 +19,4 @@ const Supplier = sequelize.define(
   }
 );
 
-module.exports = Supplier;
+module.exports = TripType;
