@@ -58,6 +58,14 @@ const Customer = sequelize.define(
         key: "AgentId",
       },
     },
+    UserId: {
+      type: DataTypes.STRING(100),
+      allowNull: false,
+    },
+    Password: {
+      type: DataTypes.STRING(100),
+      allowNull: false,
+    },
   },
   {
     timestamps: false,
