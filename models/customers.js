@@ -49,6 +49,7 @@ const Customer = sequelize.define(
     CustEmail: {
       type: DataTypes.STRING(50),
       allowNull: false,
+      unique: true,
     },
     AgentId: {
       type: DataTypes.INTEGER,
