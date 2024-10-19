@@ -63,7 +63,7 @@ const Customer = sequelize.define(
       allowNull: false,
     },
     Password: {
-      type: DataTypes.STRING(100),
+      type: DataTypes.STRING(255),
       allowNull: false,
     },
   },

@@ -1,6 +1,7 @@
 const Package = require("../models/packages");
 const Customer = require("../models/customers");
 const Booking = require("../models/bookings");
+const { hashPassword, verifyPassword } = require("../utils/password");
 const { generateBookingNo } = require("../utils/booking_no");
 
 /**
@@ -40,6 +41,8 @@ async function getActivePackages() {
  * @param {string} orderDetail.custBusPhone - The business phone number of the customer
  * @param {string} orderDetail.custEmail - The email address of the customer
  * @param {number} orderDetail.agentId - The id of agent of the customer
+ * @param {number} orderDetail.userId - the user id of the customer
+ * @param {number} orderDetail.password - the password of the customer
  * @returns {Promise<Array>} An array of contact information
  */
 async function postOrder(orderDetail) {
@@ -61,6 +64,8 @@ async function postOrder(orderDetail) {
         CustHomePhone: orderDetail.custHomePhone,
         CustBusPhone: orderDetail.custBusPhone,
         AgentId: orderDetail.agentId,
+        UserId: orderDetail.userId,
+        Password: await hashPassword(orderDetail.password),
       }, // Data to create if not exists
     });
 
