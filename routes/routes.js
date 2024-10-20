@@ -25,9 +25,6 @@ router.get("/packages", getPackagesHandler);
 // Post booking order
 router.post("/packages/order", validatePostOrder, postOrderHandler);
 
-// Create customer
-router.post("/customer", validateCreateCustomer, createCustomerHandler);
-
 // Trip type
 router.get("/triptypes", getTripTypesHandler);
 

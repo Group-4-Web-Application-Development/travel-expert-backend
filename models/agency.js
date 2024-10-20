@@ -44,11 +44,4 @@ const Agency = sequelize.define(
   }
 );
 
-Agency.associate = (models) => {
-  Agency.hasMany(models.Agent, {
-    foreignKey: "AgencyId",
-    as: "agents",
-  });
-};
-
 module.exports = Agency;

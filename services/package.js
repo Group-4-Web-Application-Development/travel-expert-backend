@@ -1,6 +1,6 @@
-const Package = require("../models/packages");
-const Customer = require("../models/customers");
-const Booking = require("../models/bookings");
+const Package = require("../models/package");
+const Customer = require("../models/customer");
+const Booking = require("../models/booking");
 const TripType = require("../models/triptype");
 const { hashPassword, verifyPassword } = require("../utils/password");
 const { generateBookingNo } = require("../utils/booking_no");
