@@ -3,17 +3,17 @@ const { body, validationResult } = require("express-validator");
 const { ErrorResponse } = require("./error");
 
 const customerFields = [
-  "CustFirstName",
-  "CustLastName",
-  "CustAddress",
-  "CustCity",
-  "CustProv",
-  "CustPostal",
-  "CustCountry",
-  "CustHomePhone",
-  "CustBusPhone",
-  "CustEmail",
-  "AgentId",
+  "custFirstName",
+  "custLastName",
+  "custAddress",
+  "custCity",
+  "custProv",
+  "custPostal",
+  "custCountry",
+  "custHomePhone",
+  "custBusPhone",
+  "custEmail",
+  "agentId",
 ];
 
 const validateCreateCustomer = [
@@ -23,7 +23,7 @@ const validateCreateCustomer = [
   ),
   body(customerFields[customerFields.length - 2]) // CustEmail
     .isEmail()
-    .withMessage("CustEmail must be a valid email address"),
+    .withMessage("custEmail must be a valid email address"),
   body(
     customerFields[customerFields.length - 3],
     customerFields[customerFields.length - 4]
