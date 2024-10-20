@@ -1,6 +1,7 @@
 const Package = require("../models/packages");
 const Customer = require("../models/customers");
 const Booking = require("../models/bookings");
+const TripType = require("../models/triptype");
 const { hashPassword, verifyPassword } = require("../utils/password");
 const { generateBookingNo } = require("../utils/booking_no");
 
@@ -47,16 +48,32 @@ async function getActivePackages() {
  */
 async function postOrder(orderDetail) {
   try {
+    // find the trip type
+    const tripType = await TripType.findOne({
+      where: { TripTypeId: orderDetail.tripTypeId },
+    });
+    if (tripType == null) {
+      throw new Error("Trip type is not found");
+    }
+
+    // find the package id
+    const package = await Package.findOne({
+      where: { PackageId: orderDetail.packageId },
+    });
+    if (package == null) {
+      throw new Error("Package is not found");
+    }
+
+    // find or create the customer record
     const [customer, created] = await Customer.findOrCreate({
       where: {
-        CustFirstName: orderDetail.custFirstName,
-        CustLastName: orderDetail.custLastName,
         CustEmail: orderDetail.custEmail, // assuming that email is unique
       },
       defaults: {
         CustFirstName: orderDetail.custFirstName,
         CustLastName: orderDetail.custLastName,
         CustAddress: orderDetail.custAddress,
+        CustEmail: orderDetail.custEmail,
         CustCity: orderDetail.custCity,
         CustProv: orderDetail.custProv,
         CustPostal: orderDetail.custPostal,
@@ -81,6 +98,7 @@ async function postOrder(orderDetail) {
 
     return { CustomerId: customer.CustomerId, BookingId: booking.BookingId };
   } catch (error) {
+    console.log(error.message);
     throw new Error("Error post a new order: " + error.message);
   }
 }
