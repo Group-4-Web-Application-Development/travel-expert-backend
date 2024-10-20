@@ -68,6 +68,13 @@ async function postOrderHandler(req, res) {
       },
     });
   } catch (error) {
+    if (
+      error.message.includes("couldn't find the selected trip type") ||
+      error.message.includes("couldn't find the selected package")
+    ) {
+      res.status(400).json(new ErrorResponse(error.message));
+      return;
+    }
     res.status(500).json(new ErrorResponse(error.message));
   }
 }

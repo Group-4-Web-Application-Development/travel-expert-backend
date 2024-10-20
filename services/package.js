@@ -53,7 +53,9 @@ async function postOrder(orderDetail) {
       where: { TripTypeId: orderDetail.tripTypeId },
     });
     if (tripType == null) {
-      throw new Error("Trip type is not found");
+      throw new Error(
+        "We couldn't find the selected trip type. Please check your selection and try again."
+      );
     }
 
     // find the package id
@@ -61,7 +63,9 @@ async function postOrder(orderDetail) {
       where: { PackageId: orderDetail.packageId },
     });
     if (package == null) {
-      throw new Error("Package is not found");
+      throw new Error(
+        "We couldn't find the selected package. Please check your selection and try again."
+      );
     }
 
     // find or create the customer record
@@ -98,8 +102,8 @@ async function postOrder(orderDetail) {
 
     return { CustomerId: customer.CustomerId, BookingId: booking.BookingId };
   } catch (error) {
-    console.log(error.message);
-    throw new Error("Error post a new order: " + error.message);
+    console.log(`"Error post a new order: ${error.message}`);
+    throw new Error(error.message);
   }
 }
 
