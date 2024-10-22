@@ -73,16 +73,10 @@ npm test
 
 ## API Endpoints
 
-### Contact Page
+`GET /contacts` - Retrieve a list of all agency contacts
 
-- `GET /contacts` - Retrieve a list of all agency contacts
+`GET /packages` - Retrieve a list of all available travel packages
 
-### Packages Page
+`POST /packages/:packageId/order` - Create a booking order for a specific package
 
-- `GET /packages` - Retrieve a list of all available travel packages
-
-- `POST /packages/:packageId/order` - Create a booking order for a specific package
-
-### Customer
-
-- `POST /customer` - Create a new customer
+`POST /customer` - Create a new customer
