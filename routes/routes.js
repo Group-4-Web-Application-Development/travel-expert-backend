@@ -14,9 +14,6 @@ const {
 
 const router = express.Router();
 
-// Home page
-router.get("/", (req, res) => {});
-
 // Contact page
 router.get("/contacts", getAgencyContactsHandler);
 
