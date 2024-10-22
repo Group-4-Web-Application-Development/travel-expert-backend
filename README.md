@@ -77,6 +77,4 @@ npm test
 
 `GET /packages` - Retrieve a list of all available travel packages
 
-`POST /packages/:packageId/order` - Create a booking order for a specific package
-
-`POST /customer` - Create a new customer
+`POST /packages/order` - Create a booking order for a specific package
