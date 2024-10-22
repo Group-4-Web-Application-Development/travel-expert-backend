@@ -7,10 +7,6 @@ const {
 } = require("../controllers/package");
 
 const { getTripTypesHandler } = require("../controllers/triptype");
-const {
-  validateCreateCustomer,
-  createCustomerHandler,
-} = require("../controllers/customer");
 
 const router = express.Router();
 
