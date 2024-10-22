@@ -73,11 +73,4 @@ const Customer = sequelize.define(
   }
 );
 
-Customer.associate = (models) => {
-  Customer.belongsTo(models.Agent, {
-    foreignKey: "AgentId",
-    as: "agent",
-  });
-};
-
 module.exports = Customer;

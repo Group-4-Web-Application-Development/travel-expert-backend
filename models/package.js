@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../config/db");
 
-const package = sequelize.define(
+const Package = sequelize.define(
   "package",
   {
     PackageId: {
@@ -42,4 +42,4 @@ const package = sequelize.define(
   }
 );
 
-module.exports = package;
+module.exports = Package;

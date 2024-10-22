@@ -1,4 +1,4 @@
-const Agency = require("../models/agencies");
+const Agency = require("../models/agency");
 /**
  * Fetch all agency's contact information from the database
  * @returns {Promise<Array>} An array of contact information

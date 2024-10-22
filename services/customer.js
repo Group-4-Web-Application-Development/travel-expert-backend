@@ -1,4 +1,4 @@
-const Customer = require("../models/customers");
+const Customer = require("../models/customer");
 /**
  * Create a new customer from form
  * @param {Object} customer - The customer object

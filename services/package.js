@@ -1,6 +1,7 @@
-const Package = require("../models/packages");
-const Customer = require("../models/customers");
-const Booking = require("../models/bookings");
+const Package = require("../models/package");
+const Customer = require("../models/customer");
+const Booking = require("../models/booking");
+const TripType = require("../models/triptype");
 const { hashPassword, verifyPassword } = require("../utils/password");
 const { generateBookingNo } = require("../utils/booking_no");
 
@@ -47,16 +48,36 @@ async function getActivePackages() {
  */
 async function postOrder(orderDetail) {
   try {
+    // find the trip type
+    const tripType = await TripType.findOne({
+      where: { TripTypeId: orderDetail.tripTypeId },
+    });
+    if (tripType == null) {
+      throw new Error(
+        "We couldn't find the selected trip type. Please check your selection and try again."
+      );
+    }
+
+    // find the package id
+    const package = await Package.findOne({
+      where: { PackageId: orderDetail.packageId },
+    });
+    if (package == null) {
+      throw new Error(
+        "We couldn't find the selected package. Please check your selection and try again."
+      );
+    }
+
+    // find or create the customer record
     const [customer, created] = await Customer.findOrCreate({
       where: {
-        CustFirstName: orderDetail.custFirstName,
-        CustLastName: orderDetail.custLastName,
         CustEmail: orderDetail.custEmail, // assuming that email is unique
       },
       defaults: {
         CustFirstName: orderDetail.custFirstName,
         CustLastName: orderDetail.custLastName,
         CustAddress: orderDetail.custAddress,
+        CustEmail: orderDetail.custEmail,
         CustCity: orderDetail.custCity,
         CustProv: orderDetail.custProv,
         CustPostal: orderDetail.custPostal,
@@ -81,7 +102,8 @@ async function postOrder(orderDetail) {
 
     return { CustomerId: customer.CustomerId, BookingId: booking.BookingId };
   } catch (error) {
-    throw new Error("Error post a new order: " + error.message);
+    console.log(`"Error post a new order: ${error.message}`);
+    throw new Error(error.message);
   }
 }
 

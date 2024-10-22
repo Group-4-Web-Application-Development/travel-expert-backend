@@ -39,19 +39,4 @@ const PackagesProductsSuppliers = sequelize.define(
   }
 );
 
-// Define associations
-PackagesProductsSuppliers.associate = (models) => {
-  // Define association with Package
-  PackagesProductsSuppliers.belongsTo(models.Package, {
-    foreignKey: "PackageId",
-    as: "package",
-  });
-
-  // Define association with ProductSupplier
-  PackagesProductsSuppliers.belongsTo(models.ProductSupplier, {
-    foreignKey: "ProductSupplierId",
-    as: "productSupplier",
-  });
-};
-
 module.exports = PackagesProductsSuppliers;

@@ -7,15 +7,8 @@ const {
 } = require("../controllers/package");
 
 const { getTripTypesHandler } = require("../controllers/triptype");
-const {
-  validateCreateCustomer,
-  createCustomerHandler,
-} = require("../controllers/customer");
 
 const router = express.Router();
-
-// Home page
-router.get("/", (req, res) => {});
 
 // Contact page
 router.get("/contacts", getAgencyContactsHandler);
@@ -24,9 +17,6 @@ router.get("/contacts", getAgencyContactsHandler);
 router.get("/packages", getPackagesHandler);
 // Post booking order
 router.post("/packages/order", validatePostOrder, postOrderHandler);
-
-// Create customer
-router.post("/customer", validateCreateCustomer, createCustomerHandler);
 
 // Trip type
 router.get("/triptypes", getTripTypesHandler);

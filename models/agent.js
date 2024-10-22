@@ -48,12 +48,4 @@ const Agent = sequelize.define(
   }
 );
 
-// Define associations
-Agent.associate = (models) => {
-  Agent.belongsTo(models.Agency, {
-    foreignKey: "AgencyId",
-    as: "agency",
-  });
-};
-
 module.exports = Agent;
