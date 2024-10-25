@@ -39,6 +39,9 @@ const validatePostOrder = [
   body("custEmail") // CustEmail
     .isEmail()
     .withMessage("Email address must be a valid email address"),
+  body("custPostal")
+    .isPostalCode("CA")
+    .withMessage("Invalid Canadian postal code"),
   body("custHomePhone")
     .optional({ checkFalsy: true })
     .trim()
